@@ -1,0 +1,2092 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Rpt_ServiceBook.aspx.cs" Inherits="mis_HRMS_Rpt_ServiceBook" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentHeader" runat="Server">
+
+
+    <style>
+        #myElement, #myElement1 {
+            display: block;
+        }
+
+        #logpImage2 {
+            display: none;
+        }
+
+        @media print {
+            #myElement, #myElement1 {
+                display: none;
+            }
+
+            .boldnote {
+                font: bold;
+                font-size: 20px;
+            }
+
+            #logpImage2 {
+                display: block;
+                margin-top: 2rem;
+            }
+
+            #fdInformation {
+                margin-top: 3rem;
+            }
+
+            #fdEmployeeAccountInfo, #fdHalfPayLeaveRecords, #fdEducationQualification, #fdDetailsofAwards, #fdEducationQualification {
+                page-break-before: always;
+                margin-top: 3rem;
+            }
+        }
+    </style>
+    <style>
+        th {
+            white-space: nowrap;
+        }
+
+        fieldset {
+            border: 0.8px solid #021d3a8c /*#ffa500*/;
+        }
+
+        legend {
+            border-radius: 7px;
+            border: 1.5px solid #021d3a78 /*#ffa500*/;
+        }
+
+        .select2-container .select2-selection--single, .form-control {
+            border-radius: 0.2rem !important;
+        }
+
+        .select2-container .select2-selection--single, .form-control {
+            border: 1px solid #1b5b5c47;
+        }
+
+            .form-control:disabled, .form-control[readonly] {
+                background-color: #f5f5f538 !important;
+            }
+
+        .table-bordered > :not(caption) > * > * {
+            border-width: 1px !important;
+        }
+
+        .table > :not(caption) > * > * {
+            padding: 0.3rem 0.5rem !important;
+        }
+
+        #idSpouseOfcAdd {
+            display: none;
+        }
+
+        #idSpouseName {
+            display: none;
+        }
+
+        #idSpouseDept {
+            display: none;
+        }
+
+        #idSpouseGovEmp {
+            display: none;
+        }
+
+        #idSpouseName {
+            display: none;
+        }
+
+        #idBankDetailsBox {
+            display: none;
+        }
+
+        /*     #idFirstAppointment {
+            display: none;
+        }
+
+        #idCurrentAppointment {
+            display: none;
+        }
+*/
+        #handipaceType {
+            display: none;
+        }
+
+        #HandicapePercentage {
+            display: none;
+        }
+
+        #idDeptName {
+            display: none;
+        }
+
+        #idCurDeptName {
+            display: none;
+        }
+
+        #LevelF {
+            display: none;
+        }
+
+        #BasicPayF {
+            display: none;
+        }
+
+        #GradePayF {
+            display: none;
+        }
+
+        #PayScaleF {
+            display: none;
+        }
+
+        #txtBasicPayF {
+            display: none;
+        }
+
+        #LevelC {
+            display: none;
+        }
+
+        #BasicPayC {
+            display: none;
+        }
+
+        #PayScaleC {
+            display: none;
+        }
+
+        #GradePayC {
+            display: none;
+        }
+
+        #txtBasicPayC {
+            display: none;
+        }
+
+        .firstCol {
+            width: 14rem;
+        }
+
+        #PrintHeader {
+            display: none;
+        }
+
+        .FirstAppointDetailWidth {
+            width: 18rem;
+        }
+
+        @media print {
+            .firstCol {
+                width: 14rem;
+            }
+
+            .FirstAppointDetailWidth {
+                width: 14rem;
+            }
+
+            #PrintHeader {
+                display: block;
+                margin-top: 40px;
+            }
+
+            .PrintNo {
+                display: none;
+            }
+        }
+
+        table th {
+            background-color: white !important;
+        }
+        /*.table th{
+            font-family:'Times New Roman', Times, serif;
+            font-weight:bold;
+        }*/
+    </style>
+    <style>
+        .profileimage {
+            display: block;
+            height: 7.0rem;
+            margin-left: 2rem;
+        }
+
+        html body .m-t-30 {
+            margin-top: 0px;
+        }
+
+        .tab-menu {
+            color: #313132;
+            font-weight: 600 !important;
+            margin-left: 1px !important;
+            border: 1px solid #a5a3a3 !important;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out !important;
+        }
+
+            .tab-menu:hover {
+                color: #16603ae3;
+            }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: #16603ae3;
+        }
+
+        #logpImage {
+            margin-bottom: 0.5rem;
+            margin-top: -2rem;
+        }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="Server">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                <h4 class="mb-sm-0"></h4>
+                <div class="=page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item">
+                            <span>Home</span>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#HRMS" data-bs-toggle="collapse" role="button" aria-expanded="false"><span>HRMS</span></a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#E-ServiceBook" data-bs-toggle="collapse" role="button" onclick="SidebarToggle('HRMS')">
+                                <span>E-ServiceBook</span></a>
+                        </li>
+                        <li class="breadcrumb-item"><span>E-ServiceBook</span></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="logpImage">
+        <div class="col-lg-12">
+            <img src="../../img/emp_ser_book.png" width="35%" />
+        </div>
+        <div>
+            <h6>&nbsp&nbsp&nbsp&nbsp <span class="boldnote">Note</span>: किसी भी प्रकार की वैधानिक कार्यवाही हेतु शासकीय कार्यालय में यथोचित स्तर पर सेवा पुस्तिका के रूप में संधारित मूल सेवा पुस्तिका ही अंतिम रूप से मान्य होगी |
+            </h6>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="card card-border-primary">
+                <div class="modal" id="bs-example-modal-lg4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+                                '
+                                <img src="../../img/AppointmentOrder.jpg" class="img-fluid" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal bs-example-modal-lg5" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="../../img/Birth-Certificate.jpg" class="img-fluid" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal bs-example-modal-lg6" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <img src="../../img/CasteCertificate1.jpg" class="img-fluid" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal bs-example-modal-lg7" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="../../img/Handicape-Certificate.jpg" class="img-fluid" width="800" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal bs-example-modal-lg8" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <img src="../../img/Marriage-Certificate1.jpg" class="img-fluid" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal bs-example-modal-lg9" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <img src="../../img/10thMarksheet.jpg" class="img-fluid" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal bs-example-modal-lg10" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <img src="../../img/12thMarksheet.jpg" class="img-fluid" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal " tabindex="-1" role="dialog" id="bs-example-modal-lg11" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 style="font: bold; margin-left: auto;"></h3>
+
+                                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#firsttimeModel" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <img src="../../img/UG-Certificate.jpeg" class="img-fluid" width="750" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row page-titles mb-4" id="PrintHeader">
+                    <div class="col-md-12 text-center">
+                        <span class="text-themecolor ">DPI
+                    <br />
+                            Gautam nagar near chetak bridge bhopal
+                    <br />
+                            E-Service Book</span>
+                        <br />
+                        <span class="float-right">This copy is generated on 02/02/2024</span>
+                    </div>
+                </div>
+
+                <div class="card-body printable-border mt-4" id="printableArea">
+                    <div class="row text-center" id="logpImage2" style="margin-top: -15px">
+                        <div class="col-lg-12">
+                            <img src="../../img/Service%20Book%20Logo.png" width="50%" height="35%" />
+                        </div>
+                        <div class="row">
+                            <h6>&nbsp&nbsp&nbsp&nbsp <span class="boldnote">Note</span>: किसी भी प्रकार की वैधानिक कार्यवाही हेतु शासकीय कार्यालय में यथोचित स्तर पर सेवा पुस्तिका के रूप में संधारित मूल सेवा पुस्तिका ही अंतिम रूप से मान्य होगी |
+                            </h6>
+                        </div>
+                    </div>
+                    <fieldset id="fdInformation" style="margin-top: -15px">
+                        <legend id="Li1">Personal Information / व्यक्तिगत जानकारी</legend>
+                        <div class="row align-items-end mb-0">
+                            <div class="col-md-9 col-sm-9">
+
+                                <table class="table-bordered table">
+                                    <tr>
+                                        <td colspan="2" class="align-content-center">
+
+                                            <label>
+                                                Unique Id
+                       
+                                            </label>
+                                        </td>
+                                        <td colspan="2" class="align-content-center">AU8336
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="align-content-center">
+                                            <label>
+                                                Name
+                      
+                                            </label>
+                                        </td>
+                                        <td colspan="2" class="align-content-center">Ashok Patidar
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="col-md-3 col-sm-3">
+                                <img class="profileimage" src="../../img/Dheeraj.jpg" id="uploadedImage" alt="Image Not Available" style="height: 120px; width: 130px" />
+                                <br />
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Father's / Husband Name :</th>
+                                        <td>Rameshwar Verma</td>
+                                        <th>Date of Birth :</th>
+                                        <td>03/06/1992</td>
+                                        <th>Age :</th>
+                                        <td>33</td>
+                                    </tr>
+                                    <tr>
+
+                                        <th>Gender :</th>
+                                        <td>Male</td>
+                                        <th>Height :</th>
+                                        <td>5'7'</td>
+                                        <th>Caste :</th>
+                                        <td>OBC</td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <th>Sub Caste :</th>
+                                        <td>Bhardwaj</td>
+                                        <th>Religion :</th>
+                                        <td>Hindu</td>
+                                        <th>Identification Mark :
+                                        </th>
+                                        <td>Moles in left Hand</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Blood Group</th>
+                                        <td>A+</td>
+                                        <th>Handicapped (PWD) :</th>
+                                        <td>No</td>
+                                        <th>Critical Illness :</th>
+                                        <td>No</td>
+                                    </tr>
+                                    <tr>
+
+                                        <th>Pan No. :</th>
+                                        <td>ABCTY1234D</td>
+                                        <th>Aadhaar No. :</th>
+                                        <td>334512098765</td>
+                                        <th>Samagra ID No :</th>
+                                        <td>213409876</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Employee Treasury Code :</th>
+                                        <td>TYE2345</td>
+                                        <th>Employee PRAN Code :</th>
+                                        <td>UPE456</td>
+                                        <th>Mobile No. :</th>
+                                        <td>8878346789</td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <th>Email Id :</th>
+                                        <td>ajay@gmail.com</td>
+                                        <th>Employee Roll No. :</th>
+                                        <td>A45687</td>
+                                        <th>Rank In TET :</th>
+                                        <td>3rd</td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <th>Hobbies :</th>
+                                        <td colspan="5">Reading Books</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="ll2">Nominee Details / नामांकित व्यक्ति का विवरण</legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Nominee Name</th>
+                                    <th>Relationship with Nominee</th>
+                                    <th>Nominee Percentage</th>
+                                    <%--<th>Action</th>--%>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>Sourya Verma</td>
+                                    <td>Father</td>
+                                    <td>50%</td>
+                                    <%--<td><i class="fa fa-pen"></i>|&nbsp <i class="fa fa-trash"></i></td>--%>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+
+                                    <td>Sudha Verma</td>
+                                    <td>Mother</td>
+                                    <td>50%</td>
+                                    <%--<td><i class="fa fa-pen"></i>|&nbsp <i class="fa fa-trash"></i></td>--%>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="ll11">Address / पता</legend>
+                        <fieldset class="mt-5">
+
+                            <legend id="kl3">Present Address / वर्तमान पता</legend>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+
+                                    <tr>
+                                        <th>State :</th>
+                                        <td>Madhya Pradesh</td>
+                                        <th>Division :</th>
+                                        <td>Bhopal</td>
+                                    </tr>
+                                    <tr>
+                                        <th>District :</th>
+                                        <td>Raisen</td>
+                                        <th>Block :</th>
+                                        <td>Begamganj</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Pincode :</th>
+                                        <td>462010</td>
+                                        <th>Address line 1 :
+                                        </th>
+                                        <td>2 B, near bank of india, Awadhpuri, Bhopal, Madhya Pradesh</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address line 2 :</th>
+                                        <td colspan="3">Apt 202</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend id="l4">Permanent Address / स्थायी पता</legend>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>State :</th>
+                                        <td>Madhya Pradesh</td>
+                                        <th>Division :</th>
+                                        <td>Bhopal</td>
+                                    </tr>
+                                    <tr>
+                                        <th>District :</th>
+                                        <td>Raisen</td>
+                                        <th>Block :</th>
+                                        <td>Badi</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Pincode :</th>
+                                        <td>462030</td>
+                                        <th>Address line 1 :
+                                        </th>
+                                        <td>123 Main Street, apt 4B San Diego CA, 91911</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address line 2 :</th>
+                                        <td colspan="3">Main Street, apt 4B</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+
+                    <div id="fdEducationQualification"></div>
+                    <fieldset>
+
+                        <legend id="l5">Marital Status and Spouse Details / वैवाहिक स्थिति और जीवनसाथी का विवरण</legend>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Married Status :</th>
+                                    <td>Yes</td>
+                                    <th>Spouse Name :
+                                    </th>
+                                    <td>Shalini Verma</td>
+                                    <th>Is Spouse Government Employee :</th>
+                                    <td>No</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset>
+
+                        <legend id="l7">First Appointment Details / प्रथम नियुक्ति विवरण</legend>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered tbl-appointment">
+
+                                <tr>
+                                    <th>OIS Type :</th>
+                                    <td>Office</td>
+                                    <th>Office Type :
+                                    </th>
+                                    <td>Principal Secretary</td>
+                                </tr>
+                                <tr>
+                                    <th>First Appointment Division :</th>
+                                    <td>Gwalior</td>
+                                    <th>First Appointment District :
+                                    </th>
+                                    <td>Raisen</td>
+                                </tr>
+                                <tr>
+                                    <th>First Appointment Block :</th>
+                                    <td>Badi</td>
+                                    <th>DDO / Sankul :
+                                    </th>
+                                    <td>MVM School (584858548401)</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Office/Institute/School Code & Name :
+                                    </th>
+                                    <td>Reem Higher Secondary School (6595685484)</td>
+                                    <th>Office/Institute/School Address of first Posting
+                                                   :</th>
+                                    <td>Robertson, 1234 NW Bobcat Lane, St. Robert</td>
+                                </tr>
+                                <tr>
+
+                                    <th>First Appointment Order No :
+                                    </th>
+                                    <td>3456</td>
+                                    <th>First Appointment Order Date :</th>
+                                    <td>08/04/2020</td>
+                                </tr>
+                                <tr>
+
+                                    <th>First Appointment Department :
+                                    </th>
+                                    <td>DPI</td>
+                                    <th>Employee’s Designation Type :</th>
+                                    <td>Clerical</td>
+                                </tr>
+                                <tr>
+
+                                    <th>First Appointment Designation :
+                                    </th>
+                                    <td>Prathmik Shikshak</td>
+                                    <th>Appointment Joining Date :</th>
+                                    <td>09/11/2021</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Panal Name :
+                                    </th>
+                                    <td>SSS-3</td>
+                                    <th>Subject :</th>
+                                    <td>English</td>
+                                </tr>
+                                <%--  <tr>
+                                    <th>IF Samvilian :
+                                    </th>
+                                    <td>Yes</td>
+                                </tr>--%>
+                                <tr>
+
+                                    <th>Samvilian Order No. :
+                                    </th>
+                                    <td>2018/100144 02/10/2018</td>
+                                    <th>Samvilian Order Date :</th>
+                                    <td>29/07/2011</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Working in other Department
+                                        <br />
+                                        Organization on Deputation Transfer :
+                                    </th>
+                                    <td>No</td>
+                                    <th>Is Regular :</th>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Increment Month :
+                                    </th>
+                                    <td>January</td>
+                                    <th>Provision Period From Month :</th>
+                                    <td>01/03/2017</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Provision Period To Month :
+                                    </th>
+                                    <td>04/07/2021</td>
+                                    <th>If Provision Extend :</th>
+                                    <td>No</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Provision Type :
+                                    </th>
+                                    <td>Regular Employee</td>
+                                    <th>Employee Retirement Date</th>
+                                    <td>09/12/2026</td>
+                                </tr>
+                                <tr>
+                                    <th>Type of Post :</th>
+                                    <td>Samvida Employee</td>
+                                    <th>Class :
+                                    </th>
+                                    <td>Class 3</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Pay Commission :</th>
+                                    <td>Seventh Pay Commission</td>
+                                    <th>Level :</th>
+                                    <td>Level-3</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Pay Scale :</th>
+                                    <td>9300-34800</td>
+                                    <th>Basic Pay :</th>
+                                    <td>16500</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+
+                        <legend id="l8">Current Posting Details / वर्तमान पदस्थापना का विवरण</legend>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered tbl-appointment">
+
+                                <tr>
+                                    <th>OIS Type :</th>
+                                    <td>Institude</td>
+                                    <th>Office Type :</th>
+                                    <td>DPI</td>
+                                </tr>
+                                <tr>
+                                    <th>Current Appointment Division :</th>
+                                    <td>Narmadapuram</td>
+                                    <th>Current Appointment District :
+                                    </th>
+                                    <td>Sehore</td>
+                                </tr>
+                                <tr>
+                                    <th>Current Appointment Block :</th>
+                                    <td>Ashta</td>
+                                    <th>DDO / Sankul :
+                                    </th>
+                                    <td>Geetanjali Public School (614258475168)</td>
+                                </tr>
+                                <tr>
+                                    <th>Office/Institute/School Code & Name :
+                                    </th>
+                                    <td>OM Higher Secondary School (6859475168)</td>
+                                    <th>Office/Institute/School Address of first Posting
+:</th>
+                                    <td>Robertson, 1234 NW Bobcat Lane, St. Robert</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Current Appointment Order No :
+                                    </th>
+                                    <td>9840</td>
+                                    <th>Current Appointment Order Date :</th>
+                                    <td>09/10/2020</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Current Appointment Department :
+                                    </th>
+                                    <td>DPI</td>
+                                    <th>Employee’s Designation Type :</th>
+                                    <td>Executive</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Current Appointment Designation :
+                                    </th>
+                                    <td>Prathmik Shikshak</td>
+                                    <th>Current Appointment Joining Date :</th>
+                                    <td>01/11/2021</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Panal Name :
+                                    </th>
+                                    <td>SSS-5</td>
+                                    <th>Subject :</th>
+                                    <td>Maths</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Samvilian Order No. :
+                                    </th>
+                                    <td>92357</td>
+                                    <th>Samvilian Order Date :</th>
+                                    <td>20/12/2018</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Working in other Department
+                                        <br />
+                                        Organization on Deputation Transfer :
+                                    </th>
+                                    <td>No</td>
+                                    <th>Is Regular :</th>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Increment Month :
+                                    </th>
+                                    <td>January</td>
+
+                                    <th>Employee Retirement Date</th>
+                                    <td>09/10/2026</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Type of Post :</th>
+                                    <td>Samvida Employee</td>
+                                    <th>Class :
+                                    </th>
+                                    <td>Class 3</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Pay Commission :</th>
+                                    <td>Seventh Pay Commission</td>
+                                    <th>Level :</th>
+                                    <td>Level-3</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Pay Scale :</th>
+                                    <td>9300-34800</td>
+                                    <th>Basic Pay :</th>
+                                    <td>16500</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </fieldset>
+                    <div id="fdEmployeeAccountInfo"></div>
+                    <fieldset>
+                        <legend id="l6">Education Qualification / शैक्षणिक योग्यता</legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Qualification :</th>
+                                    <td>BCA</td>
+                                    <th>Subject :
+                                    </th>
+                                    <td>Computer</td>
+                                </tr>
+                                <tr>
+                                    <th>Board / Univercity Name :</th>
+                                    <td>MP Board</td>
+                                    <th>Passing Year :
+                                    </th>
+                                    <td>03/05/2022</td>
+                                </tr>
+                                <tr>
+                                    <th>Grade / Percentage :</th>
+                                    <td colspan="3">75%</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="l9">Employee Account Info / कर्मचारी खाता जानकारी</legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <%--           <tr>
+                                    <th>IFSC Code :</th>
+                                    <td>SBIN0005943 </td>
+                                    <th>Bank Name</th>
+                                    <td>State Bank of India</td>
+                                </tr>
+                                <tr>
+                                    <th>Branch Name</th>
+                                    <td>Jawahar Chowk</td>
+                                    <th>Account Type</th>
+                                    <td>Salary</td>
+                                </tr>
+                                <tr>
+                                    <th>Account No.</th>
+                                    <td>0112345678 </td>
+                                    <th>Provident Fund :</th>
+                                    <td>DPF No.</td>
+
+                                </tr>--%>
+                                <tr>
+                                    <th>DPF No. :</th>
+                                    <td>34567</td>
+                                    <th>Group Insurance No :</th>
+                                    <td>B57445</td>
+                                </tr>
+                                <tr>
+                                    <th>Gratuity No. :</th>
+                                    <td>TGT5676</td>
+                                    <th>EGLS No. :</th>
+                                    <td>PO7856</td>
+                                </tr>
+                                <tr>
+                                    <th>EDLI No. :</th>
+                                    <td>ILG98</td>
+                                    <th>ESIC No. :</th>
+                                    <td>UYT567</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="20">Promotion Details / पदोन्नति का विवरण </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Promotion Type<br />
+                                            पदोन्नति का प्रकार</th>
+                                        <th>Order  Number<br />
+                                            आदेश  क्रमांक  </th>
+                                        <th>Order Date<br />
+                                            आदेश  दिनांक </th>
+                                        <th>Name of the
+                                            <br />
+                                            issuing office<br />
+                                            जारीकर्ता  कार्यालय
+                                            <br />
+                                            का नाम </th>
+                                        <th>District In Case of<br />
+                                            District/ Division<br />
+                                            Level Authority<br />
+                                            जिला/मंडल स्तरीय प्राधिकरण<br />
+                                            के मामले में जिला</th>
+                                        <th>Designation<br />
+                                            पदनाम </th>
+                                        <th>Pay Scale
+                                            <br />
+                                            of the Post<br />
+                                            पद का वेतनमान </th>
+                                        <th>Joining Date<br />
+                                            कार्यभार दिनांक  </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <th>Without Transfer</th>
+                                        <th>231/22</th>
+                                        <td>22/02/2022</td>
+                                        <td>DPI</td>
+                                        <td>Nil</td>
+                                        <td>Assistant Grate-I</td>
+                                        <td>50000</td>
+                                        <td>23/2/2022</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="24">Transfer Details / स्थानांतरण विवरण </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Transfer Type<br />
+                                            स्थानांतरण का प्रकार</th>
+                                        <th>Order  Number<br />
+                                            आदेश  क्रमांक  </th>
+                                        <th>Order Date<br />
+                                            आदेश  दिनांक </th>
+                                        <th>Designation(Type)
+                        <br />
+                                            पदनाम(प्रकार)</th>
+                                        <th>Posted School/Institute/Office Name(DISE Code)
+                        <br />
+                                            पदस्थापित विद्यालय/संस्थान/कार्यालय का नाम (DISE कोड)  
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Administrative Transfer</td>
+                                        <td>135924</td>
+                                        <td>09/08/2023</td>
+                                        <td>Prathmik Shikshak(teaching)</td>
+                                        <td>GMS Kudana 1 To 8 [23220403602]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="21">PayScale Details / वेतनमान का विवरण </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Order  Number<br />
+                                            आदेश  क्रमांक  </th>
+                                        <th>Order Date<br />
+                                            आदेश  दिनांक </th>
+                                        <th>Name of the issuing office<br />
+                                            जारीकर्ता  कार्यालय का नाम </th>
+                                        <th>District In Case of District/Division Level Authority<br />
+                                            जिला/मंडल स्तरीय प्राधिकरण के मामले में जिला</th>
+                                        <th>Pay Scale<br />
+                                            वेतनमान </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <th>231/22</th>
+                                        <td>22/02/2022</td>
+                                        <td>DPI</td>
+                                        <td>Nil</td>
+                                        <td>8000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="22">Increment  Details / वेतन वृद्धि आदेश का विवरण </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Year<br />
+                                            वर्ष</th>
+                                        <th>Month<br />
+                                            महीना </th>
+                                        <th>New Basic Pay<br />
+                                            नया मूल वेतन</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <th>2022</th>
+                                        <td>April</td>
+                                        <td>16000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <%--<fieldset>
+                        <legend id="23">Special Increment Order Details / विशेष वेतन वृद्धि आदेश का विवरण </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Order  Number<br />
+                                            आदेश  क्रमांक  </th>
+                                        <th>Order Date<br />
+                                            आदेश  दिनांक </th>
+                                        <th>Type of Increment
+                                            <br />
+                                            वेतन वृद्धि का प्रकार  
+                                        </th>
+                                        <th>Authorized Officer<br />
+                                            अधिकृत अधिकारी 
+                                        </th>
+                                        <th>Year<br />
+                                            वर्ष</th>
+                                        <th>Month<br />
+                                            महीना </th>
+                                        <th>New Basic Pay<br />
+                                            नया मूल वेतन</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="8">Special Increment Order Details Not Available</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>--%>
+
+                    <fieldset>
+                        <legend id="28">Approved  Leave Details / स्वीकृत अवकाश का विवरण</legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Type of leave
+                                            <br />
+                                            अवकाश का प्रकार </th>
+                                        <th>Duration in days<br />
+                                            अवधि दिनों में </th>
+                                        <th>From  date
+                                           <br />
+                                            दिनांक से
+                                        </th>
+                                        <th>To Date
+                        <br />
+                                            दिनांक तक</th>
+                                        <th>Acceptance Date
+                                           <br />
+                                            स्वीकृति दिनांक
+                                        </th>
+                                        <th>approver
+                    <br />
+                                            स्वीकृतकर्ता</th>
+                                        <th>Date of return from leave<br />
+                                            अवकाश में वापसी की तिथि </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>CL</td>
+                                        <td>5</td>
+                                        <td>01/08/2024</td>
+                                        <td>05/08/2024</td>
+                                        <td>24/07/0224</td>
+                                        <td>AB1120-अशोक कुमार </td>
+                                        <td>06/08/2024</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="26">Earned  Leave Records / अर्जित अवकाश का विवरण </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Year<br />
+                                            वर्ष</th>
+                                        <th>Month<br />
+                                            महीना</th>
+                                        <th>Earned Leave (in Day)<br />
+                                            अर्जित अवकाश 
+                                        </th>
+                                        <th>Available Leave (in Day)<br />
+                                            उपलब्ध अवकाश </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">Earned Leave Details Not Available</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <%--<div id="fdHalfPayLeaveRecords">
+                    </div>--%>
+                    <%--<fieldset>
+                        <legend id="27">Half Pay  Leave Records / अर्ध वेतन अवकाश का विवरण  </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Year
+                    <br />
+                                            वर्ष</th>
+                                        <th>Month<br />
+                                            महीना</th>
+                                        <th>Half Pay Leave (in Day)<br />
+                                            अर्जित अवकाश 
+                                        </th>
+                                        <th>Available Leave (in Day)
+                                            <br />
+                                            उपलब्ध अवकाश </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">Earned Leave Details Not Available</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>--%>
+
+
+                    <div id="fdHalfPayLeaveRecords">
+                    </div>
+                    <%--                             <div id="PageBreak4"></div>--%>
+                    <fieldset>
+                        <legend id="2">Unathorized   Absence Details / अनधिकृत अनुपस्थिति का विवरण</legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+
+                                        <th>Duration in days<br />
+                                            अवधि दिनों में </th>
+                                        <th>From  date
+                                           <br />
+                                            दिनांक से
+                                        </th>
+                                        <th>To Date
+                        <br />
+                                            दिनांक तक</th>
+                                        <th>Return Date
+                                           <br />
+                                            वापसी की तिथि 
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">Unathorized   Absence Details Not Available</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="31">Punishment  Details / दंड  का विवरण </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Type of Punishment
+                                            <br />
+                                            दंड  का प्रकार </th>
+                                        <th>Name of the Issuer<br />
+                                            जारीकर्ता का नाम
+                                        </th>
+                                        <th>Punishment Order Number<br />
+                                            दंड आदेश क्रमांक
+                                        </th>
+                                        <th>Punishment Order Date
+                        <br />
+                                            दंड आदेश दिनांक</th>
+                                        <th>Restore Order Number<br />
+                                            बहाली आदेश क्रमांक
+                                        </th>
+                                        <th>Restore Order Date
+                                            <br />
+                                            बहाली आदेश दिनांक</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7">Punishment  Details Not Available </td>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="30">Diciplinary Action Details / अनुशासनात्मक कार्रवाई का विवरण   </legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Type of Proceedings
+  <br />
+                                            कार्यवाही का प्रकार</th>
+                                        <th>Details of Proceedings<br />
+                                            कार्यवाही का विवरण </th>
+                                        <th>Before whom the Proceedings are Pending<br />
+                                            किसके समक्ष कार्यवाही लंबित है 
+                                        </th>
+                                        <th>From what date the Proceedings are Pending
+                          <br />
+                                            किस दिनांक से कार्यवाही लंबित है</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">Diciplinary Action Details Not Available </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Are You Involved in National or State Level Training or State Level Group / 
+                            क्या आप राष्ट्रीय या राज्य स्तरीय प्रशिक्षण या राज्य स्तरीय समूह में शामिल हैं 
+                        </legend>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive ">
+                                    <table class="table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>Sr. No.
+                                 <br />
+                                                    सरल क्र.</th>
+                                                <th>Source Group Area
+                                 <br />
+                                                    स्त्रोत समूह क्षेत्र</th>
+                                                <th>National Level Working Day
+                                 <br />
+                                                    राष्ट्रीय स्तर पर कार्य दिवस</th>
+                                                <th>State Level Working Day
+                                 <br />
+                                                    राज्य स्तर पर कार्य दिवस</th>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>पुस्तक लेखन</td>
+                                                <td>10 दिन
+                                                </td>
+                                                <td>15 दिन
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>रिसर्च</td>
+                                                <td>Nil
+                                                </td>
+                                                <td>Nil
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>मूल्यांकन- ब्लूप्रिंट/प्रश्नपत्र निर्माण</td>
+                                                <td>Nil
+                                                </td>
+                                                <td>Nil
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>आईईडी</td>
+                                                <td>5 दिन
+                                                </td>
+                                                <td>5 दिन
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>कंप्यूटर आधारित शिक्षण</td>
+                                                <td>5 दिन
+                                                </td>
+                                                <td>5 दिन
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <%--<div id="fdDetailsofAwards"></div>--%>
+                    <fieldset>
+                        <legend>Details of National or State Level Awards And Honors / राष्ट्रीय या राज्य स्तर के पुरस्कार व सम्मान का विवरण </legend>
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table text-center table table-hover table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th>Sr. No.<br />
+                                                    सरल क्र.</th>
+                                                <th>Name of Honor and Award<br />
+                                                    सम्मान व पुरस्कार का नाम</th>
+                                                <th>Award Level(National/State Level)
+                                                    <br />
+                                                    पुरस्कार का स्तर(राष्ट्रीय एवं राज्य स्तर के पुरस्कार)</th>
+                                                <th>Year of Award<br />
+                                                    पुरस्कार प्राप्ति का वर्ष</th>
+                                                <th>Order number if Any<br />
+                                                    आदेश क्रमांक यदि है तो</th>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+
+                                                <td>Total Green School Awards
+                                                </td>
+                                                <td>National Level 
+                                                </td>
+                                                <td>2018
+                                                </td>
+                                                <td>YT23545
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+
+                                                <td>Teaching Award
+                                                </td>
+                                                <td>State Level
+                                                </td>
+                                                <td>2021
+                                                </td>
+                                                <td>Nil
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>प्रशिक्षण का विवरण (In-service, induction, CWSN, Computer, Dakshata, ABL, 90 Days IED) :-</legend>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>Sr. No.
+                                <br />
+                                                    सरल क्र.</th>
+                                                <th>Training Type
+                                <br />
+                                                    प्रशिक्षण प्रकार</th>
+                                                <th>Level of Training (State/Division/District/Development Block)
+                                <br />
+                                                    प्रशिक्षण का स्तर (राज्य/संभाग/जिला/विकासखंड)</th>
+                                                <th>Duration of Training (in days)
+                                <br />
+                                                    प्रशिक्षण की अवधि (दिनों में)</th>
+                                                <th>From Date<br />
+                                                    दिनांक से	
+                                                </th>
+                                                <th>To Date<br />
+
+                                                    दिनांक तक
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+
+                                                <td>Computer Training
+                                                </td>
+                                                <td>Raisen
+                                                </td>
+                                                <td>10 days
+                                                </td>
+                                                <td>11/06/2024
+                                                </td>
+                                                <td>21/06/2024
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+
+                                                <td>Skills Training.
+                                                </td>
+                                                <td>Berasia 
+                                                </td>
+                                                <td>8 days
+                                                </td>
+                                                <td>01/07/2024
+                                                </td>
+                                                <td>08/07/2024
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend id="29">Rersource   Group Details / संसाधन समूह विवरण का विवरण</legend>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.<br />
+                                            सरल क्र.</th>
+                                        <th>Resource Group
+                                            <br />
+                                            संसाधन समूह </th>
+                                        <th>National Days<br />
+                                            राष्ट्रीय दिवस
+                                        </th>
+                                        <th>State Days
+                                           <br />
+                                            राज्य दिवस
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6">Rersource  Group Details Not Available</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset id="myElement">
+                        <legend id="l13">Document / दस्तावेज़</legend>
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered ">
+                                <thead>
+                                    <tr>
+                                        <td class="text-center">
+                                            <label style="font-weight: bold; font-size: large;">Sr. No.</label>
+                                        </td>
+                                        <td>
+                                            <label style="font-weight: bold; font-size: large;">Document Name  </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <label style="font-weight: bold; font-size: large;">View Document</label>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td>
+                                            <label>
+                                                Appointment Order Certificate
+        <br />
+                                                नियुक्ति आदेश प्रमाण पत्र :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg4"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td>
+                                            <label>
+                                                Birth Certificate
+                                                                <br />
+                                                जन्म प्रमाण पत्र  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg5"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td>
+                                            <label>
+                                                Caste Certificate (OBC/ST/SC)<br />
+                                                जाति प्रमाण पत्र (ओबीसी/एसटी/एससी) :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg6"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td>
+                                            <label>
+                                                Handicapped Certificate
+                                                                <br />
+                                                विकलांग प्रमाण पत्र  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg7"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">6</td>
+                                        <td>
+                                            <label>
+                                                Critical Illness Certificate<br />
+                                                गंभीर बीमारी प्रमाणपत्र  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg7"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td>
+                                            <label>
+                                                Present Posting Order
+                                                                <br />
+                                                वर्तमान पोस्टिंग ऑर्डर  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg4"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">7</td>
+                                        <td>
+                                            <label>
+                                                Married Certificate<br />
+                                                विवाहित प्रमाणपत्र  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg8"></i></button>
+
+                                        </td>
+                                    </tr>
+
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset id="myElement1">
+                        <legend id="l12">Educational Document / शैक्षिक दस्तावेज़</legend>
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td class="text-center">
+                                            <label style="font-weight: bold; font-size: large;">Sr. No.</label>
+                                        </td>
+                                        <td>
+                                            <label style="font-weight: bold; font-size: large;">Document Name  </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <label style="font-weight: bold; font-size: large;">View Document</label>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td>
+                                            <label>
+                                                10th Marksheet<br />
+                                                10वीं की मार्कशीट  :</label></td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg9"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td>
+                                            <label>
+                                                12th Marksheet<br />
+                                                12वीं की मार्कशीट  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg10"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td>
+                                            <label>
+                                                UG Certificate<br />
+                                                यूजी सर्टिफिकेट  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg11"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td>
+                                            <label>
+                                                Upload PG Certificate<br />
+                                                पीजी प्रमाणपत्र अपलोड करें :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-btn btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg11"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td>
+                                            <label>
+                                                Diploma Certificate<br />
+                                                डिप्लोमा प्रमाणपत्र  :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-but btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg11"></i></button>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">6</td>
+                                        <td>
+                                            <label>
+                                                Other Certificate<br />
+                                                अन्य प्रमाणपत्र :
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn view-but btn-outline-info"><i class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg11"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="row">
+                    <div class="col-md-12  text-center">
+                        <hr />
+                        <button type="button" class="btn btn-primary fw-bold btn w-lg btn-outline-primary btn-border" onclick="printCardBody()">Print</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentFooter" runat="Server">
+    <script>
+        function printCardBody() {
+            var printContents = document.getElementById("printableArea").innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+
+    <script>
+        function calculateRetirementDate() {
+            var dobInput = document.getElementById('dob').value;
+            var dob = new Date(dobInput);
+            var retirementAge = 62;
+            var retirementDate = new Date(dob.getFullYear() + retirementAge, dob.getMonth(), dob.getDate());
+            var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            var monthName = monthNames[retirementDate.getMonth()];
+            var formattedRetirementDate = retirementDate.getDate() + '/' + monthName + '/' + retirementDate.getFullYear();
+            document.getElementById('retirementDateTextbox').value = formattedRetirementDate;
+            document.getElementById('retirementDateTextbox1').value = formattedRetirementDate;
+        }
+
+        function calculateAge() {
+            var dobInput = document.getElementById('dob').value;
+
+            var dob = new Date(dobInput);
+
+            var currentDate = new Date();
+
+            var age = currentDate.getFullYear() - dob.getFullYear();
+
+            if (currentDate.getMonth() < dob.getMonth() || (currentDate.getMonth() === dob.getMonth() && currentDate.getDate() < dob.getDate())) {
+                age--;
+            }
+
+            document.getElementById('txtAge').value = age;
+
+            calculateRetirementDate();
+        }
+
+        function ShowHidePayCommissionF() {
+            var PayCommissionF = document.getElementById("PayCommissionF");
+            var LevelF = document.getElementById("LevelF");
+            var BasicPayF = document.getElementById("BasicPayF");
+            var GradePayF = document.getElementById("GradePayF");
+            var PayScaleF = document.getElementById("PayScaleF");
+            var txtBasicPayF = document.getElementById("txtBasicPayF");
+            if (PayCommissionF.value === "FourthPay" || PayCommissionF.value === "SixthPay") {
+                PayScaleF.style.display = "block";
+                GradePayF.style.display = "block";
+                txtBasicPayF.style.display = "block";
+                LevelF.style.display = "none";
+                BasicPayF.style.display = "none";
+            } else if (PayCommissionF.value === "SeventhPay") {
+                LevelF.style.display = "block";
+                PayScaleF.style.display = "block";
+                BasicPayF.style.display = "block";
+                GradePayF.style.display = "none";
+                txtBasicPayF.style.display = "none";
+            } else {
+                PayScaleF.style.display = "none";
+                GradePayF.style.display = "none";
+                txtBasicPayF.style.display = "none";
+                LevelF.style.display = "none";
+                BasicPayF.style.display = "none";
+            }
+        }
+
+        function ShowHidePayCommissionC() {
+            var PayCommissionF = document.getElementById("PayCommissionC");
+            var LevelF = document.getElementById("LevelC");
+            var BasicPayF = document.getElementById("BasicPayC");
+            var GradePayF = document.getElementById("GradePayC");
+            var PayScaleF = document.getElementById("PayScaleC");
+            var txtBasicPayF = document.getElementById("txtBasicPayC");
+            if (PayCommissionF.value === "FourthPay" || PayCommissionF.value === "SixthPay") {
+                PayScaleF.style.display = "block";
+                GradePayF.style.display = "block";
+                txtBasicPayF.style.display = "block";
+                LevelF.style.display = "none";
+                BasicPayF.style.display = "none";
+            } else if (PayCommissionF.value === "SeventhPay") {
+                LevelF.style.display = "block";
+                PayScaleF.style.display = "block";
+                BasicPayF.style.display = "block";
+                GradePayF.style.display = "none";
+                txtBasicPayF.style.display = "none";
+            } else {
+                PayScaleF.style.display = "none";
+                GradePayF.style.display = "none";
+                txtBasicPayF.style.display = "none";
+                LevelF.style.display = "none";
+                BasicPayF.style.display = "none";
+            }
+        }
+
+        function ShowBankDetails() {
+            var idBankDetailsBox = document.getElementById("idBankDetailsBox");
+
+            if (idBankDetailsBox.style.display === "none") {
+                idBankDetailsBox.style.display = "block";
+            } else {
+                idBankDetailsBox.style.display = "block";
+            }
+        }
+
+        function ShowHideHandicape() {
+            var ddlHandicape = document.getElementById("ddlHandicape");
+            var HandicapePercentage = document.getElementById("HandicapePercentage");
+            var handipaceType = document.getElementById("handipaceType");
+            if (ddlHandicape.value === "Yes") {
+                HandicapePercentage.style.display = "block";
+                handipaceType.style.display = "block";
+            } else if (ddlHandicape.value === "No") {
+                HandicapePercentage.style.display = "none";
+                handipaceType.style.display = "none";
+            }
+        }
+        function ShowHideMarried() {
+            var ddlMaarriedStatus = document.getElementById("ddlMaarriedStatus");
+            var idSpouseName = document.getElementById("idSpouseName");
+            var idSpouseGovEmp = document.getElementById("idSpouseGovEmp");
+            var idSpouseDept = document.getElementById("idSpouseDept");
+            var idSpouseName = document.getElementById("idSpouseName");
+            if (ddlHandicape.value === "Yes") {
+                HandicapePercentage.style.display = "block";
+                handipaceType.style.display = "block";
+            } else if (ddlHandicape.value === "No") {
+                HandicapePercentage.style.display = "none";
+                handipaceType.style.display = "none";
+            }
+        }
+        function ShowHideMarried() {
+            var ddlMaarriedStatus = document.getElementById("ddlMaarriedStatus");
+            var idSpouseName = document.getElementById("idSpouseName");
+            var idSpouseGovEmp = document.getElementById("idSpouseGovEmp");
+            if (ddlMaarriedStatus.value === "Yes") {
+                idSpouseName.style.display = "block";
+                idSpouseGovEmp.style.display = "block";
+            } else if (ddlMaarriedStatus.value === "No") {
+                idSpouseName.style.display = "none";
+                idSpouseGovEmp.style.display = "none";
+            }
+        }
+        function ShowHideGovEmp() {
+            var ddlSpouseGovEmp = document.getElementById("ddlSpouseGovEmp");
+            var idSpouseDept = document.getElementById("idSpouseDept");
+            var idSpouseOfcAdd = document.getElementById("idSpouseOfcAdd");
+            if (ddlSpouseGovEmp.value === "Yes") {
+                idSpouseDept.style.display = "block";
+                idSpouseOfcAdd.style.display = "block";
+            } else if (ddlSpouseGovEmp.value === "No") {
+                idSpouseDept.style.display = "none";
+                idSpouseOfcAdd.style.display = "none";
+            }
+        }
+        function ShowHideWorkingDept() {
+            var ddlWorkingDept = document.getElementById("ddlWorkingDept");
+            var idDeptName = document.getElementById("idDeptName");
+            if (ddlWorkingDept.value === "Yes") {
+                idDeptName.style.display = "block";
+            } else if (ddlWorkingDept.value === "No") {
+                idDeptName.style.display = "none";
+            } else {
+                idDeptName.style.display = "none";
+            }
+        }
+
+        function ShowHideCurWorkingDept() {
+            var ddlCurWorkingDept = document.getElementById("ddlCurWorkingDept");
+            var idCurDeptName = document.getElementById("idCurDeptName");
+            if (ddlCurWorkingDept.value === "Yes") {
+                idCurDeptName.style.display = "block";
+            } else if (ddlCurWorkingDept.value === "No") {
+                idCurDeptName.style.display = "none";
+            } else {
+                idCurDeptName.style.display = "none";
+            }
+        }
+        function displayImage(input) {
+            var file = input.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var imageContainer = document.getElementById('imageContainer');
+                    var uploadedImage = document.getElementById('uploadedImage');
+
+                    uploadedImage.src = e.target.result;
+                    imageContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        function AddRow() {
+            var tableAdd = document.getElementById("tableAdd");
+            tableAdd.style.visibility = "visible";
+            if ((tableAdd.rows.length - 1) == 3) {
+                alert('Maximum three entries allowed !!');
+            }
+            else {
+
+                tableAdd.style.visibility = "visible";
+
+                var rows = tableAdd.rows.length;
+                var r = tableAdd.insertRow(rows);
+
+                var Education = document.getElementById("Education");
+                var Subject = document.getElementById("Subject");
+                var Board = document.getElementById("Board");
+                var PassingYear = document.getElementById("PassingYear");
+                var Grade = document.getElementById("Grade");
+
+                var c1 = r.insertCell(0);
+                c1.innerHTML = tableAdd.rows.length - 1;
+
+                var c2 = r.insertCell(1);
+                c2.innerHTML = Education.value;
+
+                var c3 = r.insertCell(2);
+                c3.innerHTML = Subject.value;
+
+                var c4 = r.insertCell(3);
+                c4.innerHTML = Board.value;
+
+                var c5 = r.insertCell(4);
+                c5.innerHTML = PassingYear.value;
+
+                var c6 = r.insertCell(5);
+                c6.innerHTML = Grade.value;
+
+                var c7 = r.insertCell(6);
+                c7.innerHTML = "<a class='Alert-Edit' onclick='EditConfirmation()'><i class='fa fa-pen'></i></a>| <a class='Alert-Delete' onclick='DeleteConfirmation()'><i class='fa fa-trash'></i></a>";
+
+            }
+        }
+
+        function AddNominee() {
+            var tableAdd = document.getElementById("tblNominee");
+            tableAdd.style.visibility = "visible";
+            if ((tableAdd.rows.length - 1) == 2) {
+                alert('Maximum two entries allowed !!');
+            }
+            else {
+
+                tableAdd.style.visibility = "visible";
+
+                var rows = tableAdd.rows.length;
+                var r = tableAdd.insertRow(rows);
+                var Education = document.getElementById("txtNomineeName");
+                var Subject = document.getElementById("txtNomineeRelation");
+                var Board = document.getElementById("txtNomineePercentage");
+
+                var c1 = r.insertCell(0);
+                c1.innerHTML = tableAdd.rows.length - 1;
+
+                var c2 = r.insertCell(1);
+                c2.innerHTML = Education.value;
+
+                var c3 = r.insertCell(2);
+                c3.innerHTML = Subject.value;
+
+                var c4 = r.insertCell(3);
+                c4.innerHTML = Board.value;
+
+                var c5 = r.insertCell(4);
+                c5.innerHTML = "<a class='Alert-Edit' onclick='EditConfirmation()'><i class='fa fa-pen'></i></a>| <a class='Alert-Delete' onclick='DeleteConfirmation()'><i class='fa fa-trash'></i></a>";
+
+            }
+        }
+
+    </script>
+</asp:Content>
+
