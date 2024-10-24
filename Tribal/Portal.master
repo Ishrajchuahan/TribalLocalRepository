@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Portal.master.cs" Inherits="Portal" %>
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-layout="horizontal" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="classic" data-theme-colors="default" data-bs-theme="light" data-layout-width="fluid" data-layout-position="fixed" data-layout-style="default" data-body-image="none" data-sidebar-visibility="show">
+<head runat="server">
+    <title>SED- School Education Portal 3.0</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="SED- School Education Portal 3.0" name="description" />
+    <meta content="SED" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../mis/assets/images/logo-sm.svg">
+
+    <link href="../mis/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="../mis/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="../mis/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="../mis/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="ContentHeader" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <%--<header id="page-topbar">
+                <div class="layout-width">
+                    <div class="navbar-header">
+                        <div class="d-flex">
+                            <!-- LOGO -->
+                            <div class=" horizontal-logo">
+                                <a href="../Index.aspx" class="logo logo-dark">
+                                    <span class="logo-sm">
+                                        <img src="../mis/assets/images/logo-sm.svg" alt="" height="70">
+                                        <img src="../mis/assets/images/logo-dark.png" alt="" height="40">
+                                    </span>
+                                    <span class="logo-lg">
+                                        <img src="../mis/assets/images/logo-sm.svg" alt="" height="70">
+                                        <img src="../mis/assets/images/logo-dark.png" alt="" height="45">
+                                    </span>
+                                </a>
+                                <a href="../Index.aspx" class="logo logo-light">
+                                    <span class="logo-sm">
+                                        <img src="../mis/assets/images/logo-sm.svg" alt="" height="70">
+                                        <img src="../mis/assets/images/logo-light.png" alt="" height="40">
+                                    </span>
+                                    <span class="logo-lg">
+                                        <img src="../mis/assets/images/logo-sm.svg" alt="" height="70">
+                                        <img src="../mis/assets/images/logo-light.png" alt="" height="45">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </header>--%>
+
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <asp:ContentPlaceHolder ID="ContentBody" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script>
+                                © Madhya Pradesh State Education Portal 3.0.
+                 
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by NICSI
+                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+
+            <script src="../mis/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="../mis/assets/libs/simplebar/simplebar.min.js"></script>
+            <script src="../mis/assets/libs/node-waves/waves.min.js"></script>
+            <script src="../mis/assets/libs/feather-icons/feather.min.js"></script>
+            <script src="../mis/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+            <script src="../mis/assets/js/plugins.js"></script>
+            <script src="../mis/assets/js/pages/password-addon.init.js"></script>
+
+
+            <asp:ContentPlaceHolder ID="ContentFooter" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
