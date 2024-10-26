@@ -95,7 +95,7 @@
                         <hr />
                         <div class="form-group">
                             <button type="button" class="Alert-Confirmation btn btn-success btn-border">Save</button>
-                            <a href="Mst_Loc_NagarPalika.aspx" class="btn btn-outline-danger w-lg btn-border">Clear</a>
+                            <a href="Mst_Off_SchoolManagementGroup.aspx" class="btn btn-outline-danger w-lg btn-border">Clear</a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                                     <td>राज्य सरकार</td>
                                     <td>A</td>
                                     <td>Active</td>
-                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span>&nbsp<a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -152,7 +152,7 @@
                                     <td>सरकारी सहायता प्राप्त</td>
                                     <td>B</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span>&nbsp<a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
@@ -160,7 +160,7 @@
                                     <td>निजी गैर सहायता प्राप्त</td>
                                     <td>C</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span>&nbsp<a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
@@ -168,14 +168,14 @@
                                     <td>केंद्र सरकार</td>
                                     <td>D</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span>&nbsp<a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                     <tr>
                                         <td>5</td>
                                         <td>Others </td>
                                         <td>अन्य</td>
                                         <td>E</td>
                                         <td>Active</td>
-                                        <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                        <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span>&nbsp<a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                     </tr>
                             </table>
                         </div>
