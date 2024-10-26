@@ -36,23 +36,23 @@
                             <marquee style="width: 100%;"
                                 onmouseover="this.stop();" onmouseout="this.start();"
                                 direction="left" behavior="scroll" scrollamount="7" class="Marqueetext fw-bold">
-                               इस पेज के माध्यम से  ऑफिस का टाइप स्कूल, इंस्टिट्यूट या ऑफिस है सर्वप्रथम उसको सेलेक्ट किया जाता है उसके उपरांत  ऑफिस का लेवल सलेक्ट करें स्टेट,  डिविजन, डिस्टिक, ब्लॉक, डीडीयू,  जेएसके और स्कूल सिलेक्ट करने के उपरांत ऑफिस का नाम इंग्लिश और हिंदी में  प्रविष्टि कर उसका कोर्ट प्रविष्टि कर सेव किया जाता है जिससे आपका नया ऑफिस मास्टर में दिखने लग जाएगा, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
+                                इस पेज के माध्यम से  ऑफिस का टाइप स्कूल, इंस्टिट्यूट या ऑफिस है सर्वप्रथम उसको सेलेक्ट किया जाता है उसके उपरांत  ऑफिस का लेवल सलेक्ट करें स्टेट,  डिविजन, डिस्टिक, ब्लॉक, डीडीयू,  जेएसके और स्कूल सिलेक्ट करने के उपरांत ऑफिस का नाम इंग्लिश और हिंदी में  प्रविष्टि कर उसका कोर्ट प्रविष्टि कर सेव किया जाता है जिससे आपका नया ऑफिस मास्टर में दिखने लग जाएगा, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
                             </marquee>
                         </div>
 
                     </div>
                 </div>
-                    <div class="col-lg-12  text-end">
-                        <button type="button" id="btn1" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" onclick="div()"><i class="bx bx-plus label-icon align-middle me-2"></i>Add New Office Type Master</button>
+                <div class="col-lg-12  text-end">
+                    <button type="button" id="btn1" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" onclick="div()"><i class="bx bx-plus label-icon align-middle me-2"></i>Add New Office Type Master</button>
 
-                        <button type="button" id="btn2" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" style="display: none;" onclick="div1()"><i class="ri-arrow-go-back-line label-icon align-middle fs-16 me-2"></i>Back To List </button>
+                    <button type="button" id="btn2" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" style="display: none;" onclick="div1()"><i class="ri-arrow-go-back-line label-icon align-middle fs-16 me-2"></i>Back To List </button>
 
-                    </div>
                 </div>
+            </div>
         </div>
         <div class="card-body">
             <span id="bg"></span>
-            <fieldset id="hide" style="display:none;">
+            <fieldset id="hide" style="display: none;">
                 <legend>Add Office Type / कार्यालय प्रकार जोड़े</legend>
                 <div class="row align-items-end">
                     <div class="col-md-6 col-lg-4 col-xl-3">
@@ -60,7 +60,7 @@
                             <label>
                                 Select OIS Type
                                 <br />
-                                ओएसआई प्रकार का चयन करे<span style="color: red">*</span></label>
+                                ओआईएस प्रकार का चयन करे<span style="color: red">*</span></label>
                             <asp:DropDownList runat="server" CssClass="form-control select2">
                                 <asp:ListItem Value="0">Select</asp:ListItem>
                                 <asp:ListItem Value="1">Office</asp:ListItem>
@@ -157,10 +157,10 @@
                                             सरल क्र.</th>
                                         <th>OIS Type
                                             <br>
-                                            ओएसआई के प्रकार</th>
+                                            ओआईएस के प्रकार</th>
                                         <th>OIS Type Level
                                             <br>
-                                            ओएसआई प्रकार स्तर</th>
+                                            ओआईएस प्रकार स्तर</th>
                                         <th>Office Type Name  (In English)
                                             <br />
                                             कार्यालय प्रकार का नाम (अंग्रेज़ी में)</th>
@@ -186,7 +186,7 @@
                                     <td>टेस्ट डाटा</td>
                                     <td>54</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span>&nbsp<a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -196,7 +196,7 @@
                                     <td>वस</td>
                                     <td>66</td>
                                     <td>InActive</td>
-                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span>&nbsp<a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </table>
                         </div>
@@ -208,21 +208,21 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentFooter" runat="Server">
 
-     <script>
-     function div() {
-         document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'block') ? 'none' : 'block';
-         document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'none') ? 'block' : 'none';
-         document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'block') ? 'none' : 'inline-block';
-         document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'none') ? 'block' : 'none';
-     }
- </script>
- <script>
-     function div1() {
-         document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'none') ? 'block' : 'none';
-         document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'block') ? 'none' : 'block';
-         document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'none') ? 'block' : 'none';
-         document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'block') ? 'none' : 'inline-block';
-     }
- </script>
+    <script>
+        function div() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'block') ? 'none' : 'inline-block';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'none') ? 'block' : 'none';
+        }
+    </script>
+    <script>
+        function div1() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'block') ? 'none' : 'inline-block';
+        }
+    </script>
 </asp:Content>
 
