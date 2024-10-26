@@ -310,7 +310,7 @@
 
                             <!-- App Search-->
                             <div class="dropdown topbar-head-dropdown header-item">
-                                <h3> जनजातीय कार्य विभाग (मध्य प्रदेश)</h3>
+                                <h3>जनजातीय कार्य विभाग (मध्य प्रदेश)</h3>
                             </div>
                         </div>
 
@@ -499,6 +499,8 @@
                                                 aria-expanded="false" aria-controls="OfficeMaster" data-key="t-OfficeMaster"><i class="ri-menu-line"></i>Office Master Data</a>
                                             <div class="collapse menu-dropdown" id="OfficeMaster">
                                                 <ul class="nav nav-sm flex-column">
+
+                                                    <li class="nav-item"><a class="nav-link" href="/Tribal/mis/Masters/AboutDetails.aspx"><i class="ri-file-list-3-line"></i>About Office Master</a></li>
                                                     <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_Off_OfficeType.aspx"><i class="ri-file-list-3-line"></i>Office Type Master  Data</a></li>
 
                                                     <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_Off_SchoolType.aspx"><i class="ri-file-list-3-line"></i>School Type Master Data</a></li>
@@ -933,7 +935,7 @@
                                             <div class="collapse menu-dropdown" id="Retirement">
                                                 <ul class="nav nav-sm flex-column">
                                                     <li class="nav-item"><a class="nav-link" href="/mis/HRMS/EmpRetirement.aspx"><i class="ri-file-info-line"></i>Retirement Or Separation</a></li>
-                                                     <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_HREmpRetirement.aspx"><i class="ri-file-info-line"></i>Generate Order</a></li>
+                                                    <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_HREmpRetirement.aspx"><i class="ri-file-info-line"></i>Generate Order</a></li>
                                                     <li class="nav-item"><a class="nav-link" href="/mis/HRMS/Rpt_UpcomingRetirement.aspx"><i class="ri-file-info-line"></i>Upcoming Retirement Report</a></li>
                                                     <li class="nav-item"><a class="nav-link" href="/mis/HRMS/RetirementAndSeperationReport.aspx"><i class="ri-file-info-line"></i>Retirement Or Separation Report</a></li>
                                                 </ul>

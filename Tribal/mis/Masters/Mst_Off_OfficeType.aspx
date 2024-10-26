@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_OfficeType.aspx.cs" Inherits="mis_Masters_Office_Masters_Mst_OfficeType" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Tribal/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_OfficeType.aspx.cs" Inherits="Tribal_mis_Masters_Office_Masters_Mst_OfficeType" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentHeader" runat="Server">
 </asp:Content>
@@ -24,33 +24,44 @@
             </div>
         </div>
     </div>
-    <div class="marqueecontainer">
-        <div class="headertext">Details About Page / पेज के बारे में विवरण</div>
-        <div>
-            <marquee style="width: 100%;" onmouseover="this.stop();" onmouseout="this.start();" direction="left" behavior="scroll" scrollamount="7" class="Marqueetext">
-                इस पेज के माध्यम से  ऑफिस का टाइप स्कूल, इंस्टिट्यूट या ऑफिस है सर्वप्रथम उसको सेलेक्ट किया जाता है उसके उपरांत  ऑफिस का लेवल सलेक्ट करें स्टेट,  डिविजन, डिस्टिक, ब्लॉक, डीडीयू,  जेएसके और स्कूल सिलेक्ट करने के उपरांत ऑफिस का नाम इंग्लिश और हिंदी में  प्रविष्टि कर उसका कोर्ट प्रविष्टि कर सेव किया जाता है जिससे आपका नया ऑफिस मास्टर में दिखने लग जाएगा, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
-            </marquee>
-        </div>
-    </div>
     <div class="card card-border-primary">
         <div class="card-header">
             <div class="row">
-                <div class="col-lg-6">
-                    <h4 class="card-title">Office Type Master / ऑफिस टाइप मास्टर</h4>
+                <div class="col-xxl-12 col-md-12">
+                    <div class="marqueecontainerinfo">
+                        <div class="headertext btn btn-primary rounded-pill">
+                            कार्यालय प्रकार मास्टर डेटा विवरण
+                        </div>
+                        <div>
+                            <marquee style="width: 100%;"
+                                onmouseover="this.stop();" onmouseout="this.start();"
+                                direction="left" behavior="scroll" scrollamount="7" class="Marqueetext fw-bold">
+                               इस पेज के माध्यम से  ऑफिस का टाइप स्कूल, इंस्टिट्यूट या ऑफिस है सर्वप्रथम उसको सेलेक्ट किया जाता है उसके उपरांत  ऑफिस का लेवल सलेक्ट करें स्टेट,  डिविजन, डिस्टिक, ब्लॉक, डीडीयू,  जेएसके और स्कूल सिलेक्ट करने के उपरांत ऑफिस का नाम इंग्लिश और हिंदी में  प्रविष्टि कर उसका कोर्ट प्रविष्टि कर सेव किया जाता है जिससे आपका नया ऑफिस मास्टर में दिखने लग जाएगा, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
+                            </marquee>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+                    <div class="col-lg-12  text-end">
+                        <button type="button" id="btn1" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" onclick="div()"><i class="bx bx-plus label-icon align-middle me-2"></i>Add New Office Type Master</button>
+
+                        <button type="button" id="btn2" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" style="display: none;" onclick="div1()"><i class="ri-arrow-go-back-line label-icon align-middle fs-16 me-2"></i>Back To List </button>
+
+                    </div>
+                </div>
         </div>
         <div class="card-body">
             <span id="bg"></span>
-            <fieldset>
+            <fieldset id="hide" style="display:none;">
                 <legend>Add Office Type / कार्यालय प्रकार जोड़े</legend>
                 <div class="row align-items-end">
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="form-group">
-                            <label>Select OSI Type
+                            <label>
+                                Select OIS Type
                                 <br />
                                 ओएसआई प्रकार का चयन करे<span style="color: red">*</span></label>
-                            <asp:DropDownList runat="server" CssClass="form-control form-select">
+                            <asp:DropDownList runat="server" CssClass="form-control select2">
                                 <asp:ListItem Value="0">Select</asp:ListItem>
                                 <asp:ListItem Value="1">Office</asp:ListItem>
                                 <asp:ListItem Value="2">School</asp:ListItem>
@@ -60,10 +71,11 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="form-group">
-                            <label>Select Office Type Level
+                            <label>
+                                Select Office Type Level
                                 <br />
                                 कार्यालय प्रकार स्तर चयन करे<span style="color: red">*</span></label>
-                            <asp:DropDownList runat="server" CssClass="form-control form-select">
+                            <asp:DropDownList runat="server" CssClass="form-control select2">
                                 <asp:ListItem Value="0">Select</asp:ListItem>
                                 <asp:ListItem Value="1">1-State Level</asp:ListItem>
                                 <asp:ListItem Value="2">2-Division Level</asp:ListItem>
@@ -75,7 +87,8 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="form-group">
-                            <label>Enter Office Type Name  (In English)
+                            <label>
+                                Enter Office Type Name  (In English)
                                 <br />
                                 कार्यालय प्रकार का नाम दर्ज करे(अंग्रेज़ी में)<span style="color: red">*</span></label>
                             <input type="text" class="form-control" placeholder="Enter Office Type" onkeypress="return lettersOnly();" />
@@ -83,7 +96,8 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="form-group">
-                            <label>Enter Office Type Name  (In Hindi)
+                            <label>
+                                Enter Office Type Name  (In Hindi)
                                 <br />
                                 कार्यालय प्रकार का नाम दर्ज करे(हिंदी में)<span style="color: red">*</span></label>
                             <input type="text" class="form-control" autocomplete="off" placeholder="कार्यालय का प्रकार दर्ज करे" />
@@ -91,7 +105,8 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="form-group">
-                            <label>Enter Office Type Code No.
+                            <label>
+                                Enter Office Type Code No.
                                 <br />
                                 ऑफिस प्रकार कोड संख्या दर्ज करे<span style="color: red">*</span></label>
                             <input type="text" class="form-control" placeholder="Code Number" onkeypress="return lettersOnly();" />
@@ -111,12 +126,12 @@
                         <hr />
                         <div class="form-group">
                             <button type="button" class="Alert-Confirmation btn btn-success btn-border">Save</button>
-                            <a href="Mst_Loc_NagarPalika.aspx" class="btn btn-outline-danger w-lg btn-border">Clear</a>
+                            <a href="Mst_Off_OfficeType.aspx" class="btn btn-outline-danger w-lg btn-border">Clear</a>
                         </div>
                     </div>
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset id="show1">
                 <legend>Office Type Details / कार्यालय प्रकार विवरण</legend>
                 <div class="row justify-content-end">
                     <div class="col-md-4 text-end">
@@ -140,10 +155,10 @@
                                         <th>Sr.No.
                                             <br />
                                             सरल क्र.</th>
-                                        <th>OSI Type
+                                        <th>OIS Type
                                             <br>
                                             ओएसआई के प्रकार</th>
-                                        <th>OSI Type Level
+                                        <th>OIS Type Level
                                             <br>
                                             ओएसआई प्रकार स्तर</th>
                                         <th>Office Type Name  (In English)
@@ -171,7 +186,7 @@
                                     <td>टेस्ट डाटा</td>
                                     <td>54</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -181,7 +196,7 @@
                                     <td>वस</td>
                                     <td>66</td>
                                     <td>InActive</td>
-                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </table>
                         </div>
@@ -192,5 +207,22 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentFooter" runat="Server">
+
+     <script>
+     function div() {
+         document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'block') ? 'none' : 'block';
+         document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'none') ? 'block' : 'none';
+         document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'block') ? 'none' : 'inline-block';
+         document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'none') ? 'block' : 'none';
+     }
+ </script>
+ <script>
+     function div1() {
+         document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'none') ? 'block' : 'none';
+         document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'block') ? 'none' : 'block';
+         document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'none') ? 'block' : 'none';
+         document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'block') ? 'none' : 'inline-block';
+     }
+ </script>
 </asp:Content>
 
