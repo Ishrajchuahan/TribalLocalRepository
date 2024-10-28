@@ -24,72 +24,71 @@
             </div>
         </div>
     </div>
-    <div class="marqueecontainer">
-        <div class="headertext">Details About Page / पेज के बारे में विवरण</div>
-        <div>
-            <marquee style="width: 100%;" onmouseover="this.stop();" onmouseout="this.start();" direction="left" behavior="scroll" scrollamount="7" class="Marqueetext">
-                इस पेज के माध्यम से नए स्टेट को  Registered किया जाता है, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
-            </marquee>
-        </div>
+ <div class="marqueecontainer">
+    <div class="headertext">Details About Page / पेज के बारे में विवरण</div>
+    <div>
+        <marquee style="width: 100%;" onmouseover="this.stop();" onmouseout="this.start();" direction="left" behavior="scroll" scrollamount="7" class="Marqueetext">
+            इस पेज के माध्यम से नए स्टेट को Registered किया जाता है, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
+        </marquee>
     </div>
+</div>
 
-    <div class="card card-border-primary">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4 class="card-title">State Master / राज्य मास्टर</h4>
+<div class="card card-border-primary">
+    <div class="card-header">
+        State Master / राज्य मास्टर
+    </div>
+    <div class="card-body">
+        <asp:Label runat="server" ID="lblMsg"></asp:Label>
+        <fieldset>
+            <legend>Add State / राज्य जोड़े</legend>
+            <div class="row align-items-end">
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="form-group">
+                        <label>
+                            Enter State Name (In English)<br />
+                            राज्य का नाम दर्ज करें (अंग्रेजी में)<span style="color: red">*</span>
+                        </label>
+                        <input name="ctl00$ContentBody$ctl00" type="text" class="form-control" placeholder="Enter State Name" onkeypress="return hindiOnly();" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="form-group">
+                        <label>
+                            Enter Name State (In Hindi)<br />
+                            राज्य का नाम दर्ज करें (हिंदी में)<span style="color: red">*</span>
+                        </label>
+                        <input name="ctl00$ContentBody$ctl01" type="text" class="form-control" placeholder="राज्य का नाम दर्ज करे" onkeypress="return lettersOnly();" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="form-group">
+                        <label>
+                            Enter State Code No.<br />
+                            राज्य कोड संख्या दर्ज करे<span style="color: red">*</span>
+                        </label>
+                        <input name="ctl00$ContentBody$ctl02" type="text" class="form-control" placeholder="Enter Code No." onkeypress="return lettersOnly();" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="form-group">
+                        <input checked="checked" type="checkbox" data-val="true" class="form-check-input" data-val-required="The IsActive field is required." id="IsActive" name="IsActive" value="true">
+                        <label class="form-check-label">
+                            Status <small>(Active/InActive)</small><br>
+                            स्थिति (सक्रिय/निष्क्रिय)
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card-body">
-            <asp:Label runat="server" ID="lblMsg"></asp:Label>
-            <fieldset>
-                <legend>Add State / राज्य जोड़े</legend>
-                <div class="row align-items-end">
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="form-group">
-                            <label>
-                                Enter State Name (In English)<br />
-                                राज्य का नाम दर्ज करें (अंग्रेजी में)<span style="color: red">*</span></label>
-                            <input name="ctl00$ContentBody$ctl00" type="text" class="form-control" placeholder="Enter State Name" onkeypress="return hindiOnly();" />
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="form-group">
-                            <label>
-                                Enter Name State (In Hindi)<br />
-                                राज्य का नाम दर्ज करें (हिंदी में)<span style="color: red">*</span></label>
-                            <input name="ctl00$ContentBody$ctl01" type="text" class="form-control" placeholder="राज्य का नाम दर्ज करे" onkeypress="return lettersOnly();" />
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="form-group">
-                            <label>
-                                Enter State Code No.
-                                <br />
-                                राज्य कोड संख्या दर्ज करे<span style="color: red">*</span></label>
-                            <input name="ctl00$ContentBody$ctl02" type="text" class="form-control" placeholder="Enter Code No." onkeypress="return lettersOnly();" />
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="form-group">
-                            <input checked="checked" type="checkbox" data-val="true" class="form-check-input" data-val-required="The IsActive field is required." id="IsActive" name="IsActive" value="true">
-                            <label class="form-check-label">
-                                Status
-								<small>(Active/InActive)</small><br>
-                                स्थिति (सक्रिय/निष्क्रिय)
-                            </label>
-                        </div>
-                    </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-info">Save</button>
+                    <a href="Mst_Loc_State.aspx" class="btn btn-danger">Clear</a>
                 </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-12">
-                        <button type="button" class="Alert-Confirmation btn btn-outline-success btn-border  w-lg">Save</button>
-                        <a href="Mst_Loc_State.aspx" class="btn btn-outline-danger btn-border w-lg">Clear</a>
-                    </div>
-                </div>
-            </fieldset>
+            </div>
+        </fieldset>
+  </div>
+</div>
             <fieldset>
                 <legend>State Details / राज्य विवरण</legend>
                 <div class="row justify-content-end">

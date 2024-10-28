@@ -295,8 +295,9 @@
                                         <img src="/mis/assets/images/logo-sm.svg" alt="" height="50">
                                     </span>
                                     <span class="logo-lg">
-                                        <img src="mp" alt="" height="35">
+                                        <img src="/img/mainlogoo.jpg" alt="" height="35">
                                     </span>
+                                  
                                 </a>
                             </div>
 
@@ -310,12 +311,12 @@
 
                             <!-- App Search-->
                             <div class="dropdown topbar-head-dropdown header-item">
-                                <h3>जनजातीय कार्य विभाग (मध्य प्रदेश)</h3>
+                                <h3> जनजातीय कार्य विभाग (मध्य प्रदेश)</h3>
                             </div>
                         </div>
 
                         <div class="d-flex  align-items-center">
-                            <div class="ms-1 header-item d-none d-sm-flex">
+                          <%--  <div class="ms-1 header-item d-none d-sm-flex">
                                 <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
                                     <i class='bx bx-fullscreen fs-22'></i>
                                 </button>
@@ -324,7 +325,7 @@
                                 <button type="button" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle light-dark-mode">
                                     <i class='bx bx-moon fs-22'></i>
                                 </button>
-                            </div>
+                            </div>--%>
                             <div class="dropdown ms-sm-3 header-item topbar-user">
                                 <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="d-flex align-items-center">
@@ -391,10 +392,11 @@
                     <!-- Light Logo-->
                     <a href="/mis/Dashboard/AdminDashboard.aspx" class="logo logo-light">
                         <span class="logo-md logo-sm">
-                            <img src="/mis/assets/images/logo-sm.svg" alt="" height="50">
+                            <img src="/img/MPTAAS_LOGO_MP.png" alt="" height="50">
                         </span>
+   
                         <span class="logo-lg">
-                            <img src="/mis/assets/images/logo-light.png" alt="" height="35">
+                            <img src="/img/mptaas_logo_Black.png" alt="" height="47">
                         </span>
                     </a>
                     <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -499,8 +501,6 @@
                                                 aria-expanded="false" aria-controls="OfficeMaster" data-key="t-OfficeMaster"><i class="ri-menu-line"></i>Office Master Data</a>
                                             <div class="collapse menu-dropdown" id="OfficeMaster">
                                                 <ul class="nav nav-sm flex-column">
-
-                                                    <li class="nav-item"><a class="nav-link" href="/Tribal/mis/Masters/AboutDetails.aspx"><i class="ri-file-list-3-line"></i>About Office Master</a></li>
                                                     <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_Off_OfficeType.aspx"><i class="ri-file-list-3-line"></i>Office Type Master  Data</a></li>
 
                                                     <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_Off_SchoolType.aspx"><i class="ri-file-list-3-line"></i>School Type Master Data</a></li>
@@ -935,7 +935,7 @@
                                             <div class="collapse menu-dropdown" id="Retirement">
                                                 <ul class="nav nav-sm flex-column">
                                                     <li class="nav-item"><a class="nav-link" href="/mis/HRMS/EmpRetirement.aspx"><i class="ri-file-info-line"></i>Retirement Or Separation</a></li>
-                                                    <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_HREmpRetirement.aspx"><i class="ri-file-info-line"></i>Generate Order</a></li>
+                                                     <li class="nav-item"><a class="nav-link" href="/mis/Masters/Mst_HREmpRetirement.aspx"><i class="ri-file-info-line"></i>Generate Order</a></li>
                                                     <li class="nav-item"><a class="nav-link" href="/mis/HRMS/Rpt_UpcomingRetirement.aspx"><i class="ri-file-info-line"></i>Upcoming Retirement Report</a></li>
                                                     <li class="nav-item"><a class="nav-link" href="/mis/HRMS/RetirementAndSeperationReport.aspx"><i class="ri-file-info-line"></i>Retirement Or Separation Report</a></li>
                                                 </ul>
@@ -2330,7 +2330,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <script>document.write(new Date())</script>
-                                © Madhya Pradesh State Education Portal 3.0.
+                                © Madhya Pradesh Tribal Welfare Departement .
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">
@@ -3091,13 +3091,14 @@
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-03" value="img-3">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-03">
-                                        <img src="/mis/assets/images/sidebar/img-3.jpg" alt="" class="avatar-md w-auto object-fit-cover">
+                                        <img src="/img/extra/mp_trible.jfif" alt="" class="avatar-md w-auto object-fit-cover">
                                     </label>
+                            
                                 </div>
                                 <div class="form-check sidebar-setting card-radio">
                                     <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-04" value="img-4">
                                     <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-04">
-                                        <img src="/mis/assets/images/sidebar/img-4.jpg" alt="" class="avatar-md w-auto object-fit-cover">
+                                        <img src="../img/10thMarksheet.jpg" alt="" class="avatar-md w-auto object-fit-cover">
                                     </label>
                                 </div>
                             </div>
