@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_ManagementGroupDetails.aspx.cs" Inherits="mis_Masters_Office_Masters_Mst_SchoolTypeCategory" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Tribal/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_ManagementGroupDetails.aspx.cs" Inherits="Tribal_mis_Masters_Office_Masters_Mst_SchoolTypeCategory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentHeader" runat="Server">
 </asp:Content>
@@ -24,27 +24,35 @@
             </div>
         </div>
     </div>
-    <div class="marqueecontainer">
-        <div class="headertext">Details About Page / पेज के बारे में विवरण</div>
-        <div>
-            <marquee style="width: 100%;" onmouseover="this.stop();" onmouseout="this.start();" direction="left" behavior="scroll" scrollamount="7" class="Marqueetext">
-                इस पृष्ठ के माध्यम से  प्रबंधन समूह विवरण को  Registered  किया जाता है, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
-            </marquee>
-        </div>
-    </div>
     <div class="card card-border-primary">
         <div class="card-header">
             <div class="row">
-                <div class="col-lg-6">
-                    <h4 class="card-title">Management Group Detail Master
-                        <br />
-                        प्रबंधन समूह विवरण मास्टर</h4>
+                <div class="col-xxl-12 col-md-12">
+                    <div class="marqueecontainerinfo">
+                        <div class="headertext btn btn-primary rounded-pill">
+                            प्रबंधन समूह विवरण मास्टर डेटा विवरण
+                        </div>
+                        <div>
+                            <marquee style="width: 100%;"
+                                onmouseover="this.stop();" onmouseout="this.start();"
+                                direction="left" behavior="scroll" scrollamount="7" class="Marqueetext fw-bold">
+                                इस पृष्ठ के माध्यम से  प्रबंधन समूह विवरण को  Registered  किया जाता है, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
+                            </marquee>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12  text-end">
+                    <button type="button" id="btn1" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" onclick="div()"><i class="bx bx-plus label-icon align-middle me-2"></i>Add New School Management Group Details</button>
+
+                    <button type="button" id="btn2" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" style="display: none;" onclick="div1()"><i class="ri-arrow-go-back-line label-icon align-middle fs-16 me-2"></i>Back To List </button>
+
                 </div>
             </div>
         </div>
         <div class="card-body">
             <span id="ContentBody_lblMsg"></span>
-            <fieldset>
+            <fieldset id="hide" style="display:none;">
                 <legend>Management Group Detail Master</legend>
                 <div class="row align-items-end">
                     <div class="col-md-6 col-lg-4 col-xl-3">
@@ -107,7 +115,7 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset id="show1">
                 <legend>Management Group Details / प्रबंधन समूह विवरण</legend>
                 <div class="row justify-content-end">
                     <div class="col-md-4 text-end">
@@ -127,27 +135,27 @@
                         <div class="table-responsive">
                             <table class="table table-bordered text-center">
                                 <thead class="nowrap">
-                                <tr>
-                                    <th>Sr.No.
+                                    <tr>
+                                        <th>Sr.No.
                                         <br />
-                                        सरल क्र.</th>
-                                    <th>Select Management Group
+                                            सरल क्र.</th>
+                                        <th>Select Management Group
                                         <br />
-                                        प्रबंधन समूह का चयन करें</th>
-                                    <th>Management Group Details(In English)<br />
-                                        प्रबंधन समूह विवरण(अंग्रेज़ी में)</th>
-                                    <th>Management Group Details(In Hindi)<br />
-                                        प्रबंधन समूह विवरण (हिंदी में)</th>
-                                    <th>Management Details Code No.
+                                            प्रबंधन समूह का चयन करें</th>
+                                        <th>Management Group Details(In English)<br />
+                                            प्रबंधन समूह विवरण(अंग्रेज़ी में)</th>
+                                        <th>Management Group Details(In Hindi)<br />
+                                            प्रबंधन समूह विवरण (हिंदी में)</th>
+                                        <th>Management Details Code No.
                                         <br />
-                                        प्रबंधन विवरण कोड संख्या</th>
-                                    <th>Status(Active/InActive)
+                                            प्रबंधन विवरण कोड संख्या</th>
+                                        <th>Status(Active/InActive)
                                         <br />
-                                        स्थिति (सक्रिय/निष्क्रिय)</th>
-                                    <th>Action<br />
-                                        कार्यवाहीं</th>
-                                </tr>
-                                    </thead>
+                                            स्थिति (सक्रिय/निष्क्रिय)</th>
+                                        <th>Action<br />
+                                            कार्यवाहीं</th>
+                                    </tr>
+                                </thead>
                                 <tr>
                                     <td>1</td>
                                     <td>A - State Government</td>
@@ -155,7 +163,7 @@
                                     <td>शिक्षा विभाग</td>
                                     <td>01</td>
                                     <td>Active</td>
-                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -164,7 +172,7 @@
                                     <td>आदिम जाति कल्याण विभाग</td>
                                     <td>02</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
@@ -173,7 +181,7 @@
                                     <td>स्थानीय निकाय</td>
                                     <td>03</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
@@ -182,7 +190,7 @@
                                     <td>अन्य राज्य सरकार प्रबंधित</td>
                                     <td>06</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
@@ -191,7 +199,7 @@
                                     <td>अल्पसंख्यक कार्य विभाग</td>
                                     <td>89</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>6</td>
@@ -200,7 +208,7 @@
                                     <td>समाज कल्याण विभाग</td>
                                     <td>90</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>7</td>
@@ -209,7 +217,7 @@
                                     <td>श्रम मंत्रालय</td>
                                     <td>91</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>8</td>
@@ -218,7 +226,7 @@
                                     <td>सरकारी सहायता प्राप्त</td>
                                     <td>04</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>9</td>
@@ -227,7 +235,7 @@
                                     <td>आंशिक रूप से सरकारी. सहायता प्राप्त</td>
                                     <td>07</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>10</td>
@@ -236,7 +244,7 @@
                                     <td>निजी गैर सहायता प्राप्त (मान्यता प्राप्त)</td>
                                     <td>05</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>11</td>
@@ -245,7 +253,7 @@
                                     <td>केन्द्रीय विद्यालय</td>
                                     <td>92</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>12</td>
@@ -254,7 +262,7 @@
                                     <td>जवाहर नवोदय विद्यालय</td>
                                     <td>93</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>13</td>
@@ -263,7 +271,7 @@
                                     <td>सैनिक स्कूल</td>
                                     <td>94</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>14</td>
@@ -272,7 +280,7 @@
                                     <td>रेलवे स्कूल</td>
                                     <td>95</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>15</td>
@@ -281,7 +289,7 @@
                                     <td>सेंट्रल तिब्बती स्कूल</td>
                                     <td>96</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>16</td>
@@ -290,7 +298,7 @@
                                     <td>अन्य केंद्रीय सरकार/पीएसयू स्कूल</td>
                                     <td>101</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>17</td>
@@ -299,7 +307,7 @@
                                     <td>सैनिक स्कूल</td>
                                     <td>102</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>18</td>
@@ -308,7 +316,7 @@
                                     <td>गैर मान्यता प्राप्त</td>
                                     <td>08</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>19</td>
@@ -317,7 +325,7 @@
                                     <td>मदरसा निजी गैर सहायता प्राप्त (मान्यता प्राप्त)</td>
                                     <td>97</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>20</td>
@@ -326,7 +334,7 @@
                                     <td>मदरसा सहायता प्राप्त (मान्यता प्राप्त)</td>
                                     <td>99</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>21</td>
@@ -335,7 +343,7 @@
                                     <td>मदरसा गैर मान्यता प्राप्त</td>
                                     <td>98</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </table>
                         </div>
@@ -346,5 +354,22 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentFooter" runat="Server">
+
+    <script>
+        function div() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'block') ? 'none' : 'inline-block';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'none') ? 'block' : 'none';
+        }
+    </script>
+    <script>
+        function div1() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'block') ? 'none' : 'inline-block';
+        }
+    </script>
 </asp:Content>
 

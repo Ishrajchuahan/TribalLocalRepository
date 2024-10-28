@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_SchoolBoard.aspx.cs" Inherits="mis_Masters_Office_Masters_Mst_SchoolBoard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Tribal/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_SchoolBoard.aspx.cs" Inherits="Tribal_mis_Masters_Office_Masters_Mst_SchoolBoard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentHeader" runat="Server">
 </asp:Content>
@@ -25,26 +25,36 @@
             </div>
         </div>
     </div>
-    <div class="marqueecontainer">
-        <div class="headertext">Details About Page / पेज के बारे में विवरण</div>
-        <div>
-            <marquee style="width: 100%;" onmouseover="this.stop();" onmouseout="this.start();" direction="left" behavior="scroll" scrollamount="7" class="Marqueetext">
-                इस पेज के माध्यम  से स्कूल के बोर्ड का Registration किया जाता है, , यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
-            </marquee>
-        </div>
-    </div>
     <div class="card card-border-primary">
         <div class="card-header">
             <div class="row">
-                <div class="col-lg-6">
-                    <h4 class="card-title">School Board Master / स्कूल बोर्ड मास्टर</h4>
+                <div class="col-xxl-12 col-md-12">
+                    <div class="marqueecontainerinfo">
+                        <div class="headertext btn btn-primary rounded-pill">
+                           स्कूल बोर्ड मास्टर डेटा विवरण
+                        </div>
+                        <div>
+                            <marquee style="width: 100%;"
+                                onmouseover="this.stop();" onmouseout="this.start();"
+                                direction="left" behavior="scroll" scrollamount="7" class="Marqueetext fw-bold">
+                                इस पेज के माध्यम  से स्कूल के बोर्ड का Registration किया जाता है, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
+                            </marquee>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12  text-end">
+                    <button type="button" id="btn1" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" onclick="div()"><i class="bx bx-plus label-icon align-middle me-2"></i>Add New School Board</button>
+
+                    <button type="button" id="btn2" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" style="display: none;" onclick="div1()"><i class="ri-arrow-go-back-line label-icon align-middle fs-16 me-2"></i>Back To List </button>
+
                 </div>
             </div>
         </div>
         <div class="card-body">
             <span id="ContentBody_lblMsg"></span>
-            <fieldset>
-                <legend>Add School Board / स्कूल बोर्ड जोड़े</legend>
+            <fieldset id="hide" style="display: none;">
+                <legend>Add New School Board / नया स्कूल बोर्ड बनाएँ</legend>
                 <div class="row align-items-end">
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="form-group">
@@ -65,7 +75,7 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="form-group">
                             <label>
-                                Enter Board Code No.
+                                Enter Board Code
                                 <br />
                                 बोर्ड कोड संख्या दर्ज करे<span style="color: red">*</span></label>
                             <input name="ctl00$ContentBody$ctl02" type="text" class="form-control" placeholder="Enter Code No." onkeypress="return lettersOnly();" />
@@ -90,7 +100,7 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset id="show1">
                 <legend>School Board Details / स्कूल बोर्ड विवरण</legend>
                 <div class="row justify-content-end">
                     <div class="col-md-4 text-end">
@@ -118,12 +128,14 @@
                                             बोर्ड का नाम (अंग्रेज़ी में)</th>
                                         <th>Board Name (In Hindi)<br />
                                             बोर्ड का नाम (हिंदी में)</th>
-                                        <th>Board Code No.<br />
+                                        <th>Board Code<br />
                                             बोर्ड कोड संख्या</th>
                                         <th>Status(Active/InActive)
                                             <br />
                                             स्थिति (सक्रिय/निष्क्रिय)</th>
-                                        <th>Action <br />कार्यवाहीं
+                                        <th>Action
+                                            <br />
+                                            कार्यवाहीं
                                             <br />
                                         </th>
                                     </tr>
@@ -134,7 +146,7 @@
                                     <td>सी.बी.एस.ई.</td>
                                     <td>01</td>
                                     <td>Active</td>
-                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -142,7 +154,7 @@
                                     <td>राज्य बोर्ड</td>
                                     <td>02</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
@@ -150,7 +162,7 @@
                                     <td>आई.सी.एस.ई.</td>
                                     <td>03</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
@@ -158,7 +170,7 @@
                                     <td>अंतर्राष्ट्रीय बोर्ड</td>
                                     <td>04</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
@@ -166,7 +178,7 @@
                                     <td>अन्य बोर्ड</td>
                                     <td>05</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>6</td>
@@ -174,7 +186,7 @@
                                     <td>सीबीएसई और राज्य बोर्ड दोनों</td>
                                     <td>06</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>7</td>
@@ -182,7 +194,7 @@
                                     <td>मदरसा बोर्ड</td>
                                     <td>07</td>
                                     <td>Active</td>
-                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </table>
                         </div>
@@ -193,5 +205,22 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentFooter" runat="Server">
+
+    <script>
+        function div() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'block') ? 'none' : 'inline-block';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'none') ? 'block' : 'none';
+        }
+    </script>
+    <script>
+        function div1() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'block') ? 'none' : 'inline-block';
+        }
+    </script>
 </asp:Content>
 

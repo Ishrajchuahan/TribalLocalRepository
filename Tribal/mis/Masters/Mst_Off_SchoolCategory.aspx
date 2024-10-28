@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_SchoolCategory.aspx.cs" Inherits="mis_Masters_Office_Masters_Mst_SchoolCategory" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Tribal/mis/MainMaster.master" AutoEventWireup="true" CodeFile="Mst_Off_SchoolCategory.aspx.cs" Inherits="Tribal_mis_Masters_Office_Masters_Mst_SchoolCategory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentHeader" runat="Server">
 </asp:Content>
@@ -24,25 +24,36 @@
             </div>
         </div>
     </div>
-    <div class="marqueecontainer">
-        <div class="headertext">Details About Page / पेज के बारे में विवरण</div>
-        <div>
-            <marquee style="width: 100%;" onmouseover="this.stop();" onmouseout="this.start();" direction="left" behavior="scroll" scrollamount="7" class="Marqueetext">
-                इस पेज के माध्यम  से स्कूल की श्रेणी का रजिस्ट्रेशन किया जाता हैं, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
-            </marquee>
-        </div>
-    </div>
+
     <div class="card card-border-primary">
         <div class="card-header">
             <div class="row">
-                <div class="col-lg-6">
-                    <h4 class="card-title">School Category Master / स्कूल श्रेणी मास्टर</h4>
+                <div class="col-xxl-12 col-md-12">
+                    <div class="marqueecontainerinfo">
+                        <div class="headertext btn btn-primary rounded-pill">
+                            स्कूल श्रेणी मास्टर डेटा विवरण
+                        </div>
+                        <div>
+                            <marquee style="width: 100%;"
+                                onmouseover="this.stop();" onmouseout="this.start();"
+                                direction="left" behavior="scroll" scrollamount="7" class="Marqueetext fw-bold">
+                                इस पेज के माध्यम  से स्कूल की श्रेणी का रजिस्ट्रेशन किया जाता हैं, यदि किसी कारणवश त्रुटी हो जाती हैं तो Registration Edit or Isactive भी किया जा सकता हैं |
+                            </marquee>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12  text-end">
+                    <button type="button" id="btn1" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" onclick="div()"><i class="bx bx-plus label-icon align-middle me-2"></i>Add New School Category</button>
+
+                    <button type="button" id="btn2" class="btn btn-primary btn-label waves-effect waves-light rounded-pill" style="display: none;" onclick="div1()"><i class="ri-arrow-go-back-line label-icon align-middle fs-16 me-2"></i>Back To List </button>
+
                 </div>
             </div>
         </div>
         <div class="card-body">
             <span id="ContentBody_lblMsg"></span>
-            <fieldset>
+            <fieldset id="hide" style="display: none;">
                 <legend>Add School Category /स्कूल श्रेणी जोड़े </legend>
                 <div class="row align-items-end">
                     <div class="col-md-6 col-lg-4 col-xl-3">
@@ -88,7 +99,7 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset id="show1">
                 <legend>School Category Details / स्कूल श्रेणी विवरण</legend>
                 <div class="row justify-content-end">
                     <div class="col-md-4 text-end">
@@ -107,42 +118,43 @@
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <table class="table table-bordered text-center">
-                                    <thead class="nowrap">
-                                        <tr>
-                                            <th>Sr.No.
+                                <thead class="nowrap">
+                                    <tr>
+                                        <th>Sr.No.
                                                 <br />
-                                                सरल क्र.</th>
-                                            <th>Category Name(In English)<br>श्रेणी का  नाम (अंग्रेज़ी में)</th>
-                                            <th>Category Name(In Hindi)<br />
-                                                श्रेणी का  नाम (हिंदी में)</th>
-                                            <th>School Category Code No.
+                                            सरल क्र.</th>
+                                        <th>Category Name(In English)<br>
+                                            श्रेणी का  नाम (अंग्रेज़ी में)</th>
+                                        <th>Category Name(In Hindi)<br />
+                                            श्रेणी का  नाम (हिंदी में)</th>
+                                        <th>School Category Code No.
                                                 <br />
-                                                स्कूल श्रेणी कोड संख्या</th>
-                                            <th>Status(Active/InActive)
+                                            स्कूल श्रेणी कोड संख्या</th>
+                                        <th>Status(Active/InActive)
                                                 <br />
-                                                स्थिति (सक्रिय/निष्क्रिय)</th>
-                                            <th>Action
+                                            स्थिति (सक्रिय/निष्क्रिय)</th>
+                                        <th>Action
                                         <br />
-                                                कार्यवाहीं</th>
-                                        </tr>
-                                    </thead>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Primary Class</td>
-                                        <td>प्राथमिक कक्षा</td>
-                                        <td>01</td>
-                                        <td>Active</td>
-                                        <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                            कार्यवाहीं</th>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Higher Secondary</td>
-                                        <td>उच्च माध्यमिक</td>
-                                        <td>02</td>
-                                        <td>Active</td>
-                                        <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span> <a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
-                                    </tr>
-                                </table>
+                                </thead>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Primary Class</td>
+                                    <td>प्राथमिक कक्षा</td>
+                                    <td>01</td>
+                                    <td>Active</td>
+                                    <td class="nowrap"><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Higher Secondary</td>
+                                    <td>उच्च माध्यमिक</td>
+                                    <td>02</td>
+                                    <td>Active</td>
+                                    <td><span class="Alert-Edit btn btn-outline-primary"><i class="fa fa-pen"></i></span><a class="Alert-Delete btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -151,5 +163,22 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentFooter" runat="Server">
+
+    <script>
+        function div() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'block') ? 'none' : 'inline-block';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'none') ? 'block' : 'none';
+        }
+    </script>
+    <script>
+        function div1() {
+            document.getElementById("hide").style.display = (document.getElementById("hide").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("show1").style.display = (document.getElementById("show1").style.display == 'block') ? 'none' : 'block';
+            document.getElementById("btn2").style.display = (document.getElementById("btn2").style.display == 'none') ? 'block' : 'none';
+            document.getElementById("btn1").style.display = (document.getElementById("btn1").style.display == 'block') ? 'none' : 'inline-block';
+        }
+    </script>
 </asp:Content>
 
